@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     try {
       const response = await fetch(
-        "https://sardor.robohouse.tech/api/api/login",
+        "https://sardor.robohouse.tech/api/login",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },

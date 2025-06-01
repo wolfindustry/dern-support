@@ -675,7 +675,7 @@ app.get("/privacy", (req, res) => {
   res.sendFile(path.join(__dirname, "../frontend", "privacy.html"));
 });
   
-const PORT = 3000;
+const PORT = 3001;
 app.listen(PORT, () => {
   console.log(`Server ${PORT}-portda ishlayapti`);
 });
