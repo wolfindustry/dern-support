@@ -1,0 +1,16 @@
+async function loadSubmissionStatistik() {
+  try {
+    const res = await fetch("http://localhost:3000/api/submission-stats");
+    const data = await res.json();
+
+    if (data.success) {
+      // Chartlarni yangilash
+      updateCharts(data);
+    } else {
+      showError(data.message || "Statistikani yuklashda xato.");
+    }
+  } catch (error) {
+    console.error("Statistikani olishda xatolik:", error);
+    showError("Statistikani yuklashda xato.");
+  }
+}

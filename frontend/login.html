@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - dernSupport</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="DernSupport — Kompyuter va texnik qurilmalarni ta'mirlash, mijoz, usta va boshqaruv tizimi orqali kirish sahifasi.">
+    <meta name="keywords" content="DernSupport, kompyuter tuzatish, texnik xizmat, login, mijoz, usta, boshqaruvchi">
+    <meta name="author" content="DernSupport Team">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:title" content="Login - DernSupport">
+    <meta property="og:description" content="Mijoz, usta va boshqaruvchi sifatida DernSupport tizimiga kiring.">
+    <meta property="og:image" content="https://example.com/logo.png"> <!-- o'rniga haqiqiy logoni link qiling -->
+    <meta property="og:url" content="https://dernSupport.uz/login.html">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter Meta -->
+    <meta name="twitter:title" content="Login - DernSupport">
+    <meta name="twitter:description" content="DernSupport tizimiga kirish sahifasi. Mijoz, usta yoki boshqaruvchi sifatida tizimga kiring.">
+    <meta name="twitter:image" content="https://example.com/logo.png">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="css/notification.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    
+    <div class="login-container">
+        <div class="login-card">
+            <div class="login-header">
+                <h1>DernSupport</h1>
+                <p>Kompyuter Tuzatish Xizmati</p>
+            </div>
+            
+            <div class="login-tabs">
+                <button id="client-tab" class="tab-btn active">Mijoz</button>
+                <button id="master-tab" class="tab-btn">Usta</button>
+                <button id="manager-tab" class="tab-btn">Boshqaruvchi</button>
+            </div>
+            
+            <div id="client-login" class="login-form active">
+                <h2>Mijozning Tizimga Kirishi</h2>
+                <p>Shaxsiy sahifangizga kirish uchun email va parolingizni kiriting</p>
+                <form id="client-login-form">
+                    <div class="form-group">
+                        <label for="client-email">Email</label>
+                        <div class="input-with-icon">
+                            <i class="fas fa-envelope"></i>
+                            <input type="email" id="client-email" placeholder="your@email.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="client-password">Parol</label>
+                            <div class="input-with-icon">
+                                <i class="fas fa-lock"></i>
+                                <input type="password" id="client-password" placeholder="••••••••" required>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn primary-btn">Tizimga Kirish</button>
+                        <a href="/register">Hali Ro'yhatdan O'tmaganman</a>
+                    </div>
+                </form>
+            </div>
+            
+            <div id="master-login" class="login-form">
+                <h2>Ustaning Tizimga Kirishi</h2>
+                <p>Shaxsiy sahifangizga kirish uchun email va parolingizni kiriting</p>
+                <form id="master-login-form">
+                    <div class="form-group">
+                        <label for="master-email">Email</label>
+                        <div class="input-with-icon">
+                            <i class="fas fa-envelope"></i>
+                            <input type="email" id="master-email" placeholder="master@dernsupport.com" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="master-password">Parol</label>
+                        <div class="input-with-icon">
+                            <i class="fas fa-lock"></i>
+                            <input type="password" id="master-password" placeholder="••••••••" required>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn primary-btn">Tizimga Kirish</button>
+                </form>
+            </div>
+            
+            <div id="manager-login" class="login-form">
+                <h2>Boshqaruvchining Tizimga Kirishi</h2>
+                <p>Shaxsiy sahifangizga kirish uchun email va parolingizni kiriting</p>
+                <form id="manager-login-form">
+                    <div class="form-group">
+                        <label for="manager-email">Email</label>
+                        <div class="input-with-icon">
+                            <i class="fas fa-envelope"></i>
+                            <input type="email" id="manager-email" placeholder="manager@dernsupport.com" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="manager-password">Parol</label>
+                        <div class="input-with-icon">
+                            <i class="fas fa-lock"></i>
+                            <input type="password" id="manager-password" placeholder="••••••••" required>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn primary-btn">Tizimga Kirish</button>
+                </form>
+            </div>
+            
+            <div class="login-footer">
+                <p>Parolni Unutib Qoydingizmi? <a href="/paroltiklash">Parolni Tiklash</a></p>
+                <p>&copy; 2025 DernSupport. Hamma Huquqlar Himoyalangan.</p>
+            </div>
+        </div>
+    </div>
+    
+    <div id="toast-container"></div>
+    <script src="js/notification.js"></script>
+    <script src="js/login.js"></script>
+</body>
+</html>

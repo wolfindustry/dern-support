@@ -1,0 +1,30 @@
+ .alert-card {
+      max-width: 400px;
+      margin: 20px auto;
+      padding: 16px;
+      border-left: 6px solid #f39c12;
+      background-color: #fff8e1;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      font-family: Arial, sans-serif;
+      border-radius: 8px;
+    }
+
+    .alert-card h4 {
+      margin: 0 0 8px;
+      font-size: 18px;
+      color: #d35400;
+    }
+
+    .alert-card p {
+      margin: 0;
+      color: #555;
+      font-size: 15px;
+    }
+
+    .alert-icon {
+      display: inline-block;
+      margin-right: 8px;
+      color: #f39c12;
+      font-size: 20px;
+      vertical-align: middle;
+    }

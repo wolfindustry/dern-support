@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Mijoz Sahifasi - TechFix</title>
+
+    <!-- SEO Meta Teglar -->
+    <meta
+      name="description"
+      content="TechFix mijozlar kabineti orqali ariza yuboring, arizalaringizni kuzatib boring va parolingizni o'zgartiring. Tez, xavfsiz va qulay xizmat."
+    />
+    <meta
+      name="keywords"
+      content="TechFix, mijoz kabineti, ariza yuborish, texnik xizmat, parol o'zgartirish, xizmat nazorati"
+    />
+    <meta name="author" content="TechFix" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Open Graph Meta (Facebook, LinkedIn uchun) -->
+    <meta property="og:title" content="Mijoz Sahifasi - TechFix" />
+    <meta
+      property="og:description"
+      content="TechFix mijozlar kabineti: ariza yuborish, holatni tekshirish va parolni boshqarish imkoniyati."
+    />
+    <meta
+      property="og:image"
+      content="https://yourdomain.com/images/preview.jpg"
+    />
+    <meta
+      property="og:url"
+      content="https://yourdomain.com/client-cabinet.html"
+    />
+    <meta property="og:type" content="website" />
+
+    <!-- Twitter Card Meta -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Mijoz Sahifasi - TechFix" />
+    <meta
+      name="twitter:description"
+      content="TechFix mijozlar sahifasida ariza yuboring, ularni kuzating va hisobni boshqaring."
+    />
+    <meta
+      name="twitter:image"
+      content="https://yourdomain.com/images/preview.jpg"
+    />
+
+    <!-- Favicon (ixtiyoriy) -->
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/cabinet.css" />
+    <link rel="stylesheet" href="css/notification.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+  </head>
+
+  <body>
+    <!-- Notification container -->
+    <div id="toast-container"></div>
+
+    <div class="cabinet-container">
+      <!-- Sidebar -->
+      <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+          <h2>Mijoz Sahifasi</h2>
+        </div>
+        <div class="sidebar-nav">
+          <ul>
+            <li id="submit-application-link" class="active">
+              <a href="#"><i class="fas fa-plus-circle"></i> Ariza Yuborish</a>
+            </li>
+            <li id="my-applications-link">
+              <a href="#"
+                ><i class="fas fa-clipboard-list"></i>Mening Arizalarim</a
+              >
+            </li>
+            <li id="change-password">
+              <a href="#"
+                ><i class="fas fa-clipboard-list"></i>Parol ozgartirish</a
+              >
+            </li>
+          </ul>
+        </div>
+        <div class="sidebar-footer">
+          <button style="color: #fff; display: flex; background-color: #95A5A6;" id="logout-btn" class="btn secondary-btn">
+            <i class="fas fa-sign-out-alt"></i> Chiqish
+          </button>
+        </div>
+      </div>
+
+      <!-- Main Content -->
+      <div class="main-content">
+        <!-- Header -->
+        <header class="cabinet-header">
+          <div
+            style="display: flex; justify-content: space-between"
+            class="user-info"
+          >
+            <div style="display: flex; gap: 10px; align-items: center">
+              <i class="fas fa-user-circle"></i>
+              <div style="display: flex; flex-direction: column">
+                <span id="user-name">Anonim</span>
+                <span id="user-email">client@example.com</span>
+              </div>
+            </div>
+          </div>
+          <button id="burger-menu" class="burger-menu">
+            <i class="fas fa-bars"></i>
+          </button>
+        </header>
+
+        <!-- Dashboard Content -->
+        <div id="change-password-container" class="content-section">
+          <h2>🔐 Parolni Almashtirish</h2>
+          <form id="changePasswordForm">
+            <label for="currentPassword">Joriy Parol:</label>
+            <input type="password" id="currentPassword" required />
+
+            <label for="newPassword">Yangi Parol:</label>
+            <input type="password" id="newPassword" required />
+
+            <label for="confirmPassword">Yangi Parolni Tasdiqlang:</label>
+            <input type="password" id="confirmPassword" required />
+
+            <button id="bnt" type="button">Parolni Yangilash</button>
+            <p id="changePasswordMessage"></p>
+          </form>
+        </div>
+
+        <!-- Submit Application Content -->
+        <div id="submit-application-content" class="content-section active">
+          <h2>Ariza yuborish</h2>
+          <form id="application-form" class="form-container">
+            <!-- Shaxs turini tanlash -->
+            <div style="display: none" class="form-group">
+              <label for="client-type">Shaxs turi</label>
+              <select id="client-type">
+                <option value="">Tanlang</option>
+                <option value="individual">Jismoniy shaxs</option>
+                <option value="company">Yuridik shaxs</option>
+              </select>
+            </div>
+
+            <!-- Kompaniya nomi (faqat yuridik shaxslar uchun) -->
+            <div
+              class="form-group"
+              id="company-name-group"
+              style="display: none"
+            >
+              <label for="company-name">Kompaniya nomi</label>
+              <input
+                type="text"
+                id="company-name"
+                placeholder="Masalan: TechFix LLC"
+              />
+            </div>
+
+            <div class="form-group" id="device-name-group">
+              <label for="company-name">Qurilma Nomi</label>
+              <input
+                type="text"
+                id="device-name"
+                placeholder="Qurilmangiz nomini kiriting"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="issue-type">Muammo turi</label>
+              <select id="issue-type" required>
+                <option value="">Muammo turini tanlang</option>
+                <option value="Texnik muammo">Texnik muammo</option>
+                <option value="Dasturiy muammo">Dasturiy muammo</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="description">Muammo tavsifi</label>
+              <textarea
+                id="description"
+                rows="4"
+                placeholder="Muammoni batafsil yozing..."
+                required
+              ></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="location">Rayon</label>
+              <select id="location" required>
+                <option value="">Tanlang</option>
+                <option value="Chilonzor">Chilonzor</option>
+                <option value="Yunusobod">Yunusobod</option>
+                <option value="Mirzo Ulug‘bek">Mirzo Ulug‘bek</option>
+                <option value="Sergeli">Sergeli</option>
+                <option value="Olmazor">Olmazor</option>
+              </select>
+            </div>
+
+            <div class="form-actions">
+              <button type="submit" id="primary-btn" class="btn primary-btn">
+                Yuborish
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <!-- My Applications Content -->
+        <div id="my-applications-content" class="content-section">
+          <h2>Mening Arizalarim</h2>
+          <!-- my-applications-content bo‘lim ichida bo‘lishi kerak -->
+          <div id="applications-list" class="applications-list"></div>
+        </div>
+      </div>
+    </div>
+    <div id="toast-container"></div>
+
+    <script src="js/notification.js"></script>
+    <script src="./js/client-cabinet.js"></script>
+    <script src="./js/tekshir.js"></script>
+  </body>
+</html>

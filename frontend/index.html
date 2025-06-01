@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>DernSupport - Kompyuter Ta'mirlash Xizmatlari</title>
+
+    <!-- SEO Asosiy Meta Teglar -->
+    <meta
+      name="description"
+      content="DernSupport - Kompyuteringizdagi har qanday muammoni hal qiluvchi ishonchli va professional kompyuter ta'mirlash xizmatlari. Tez, arzon va kafolatli xizmat!"
+    />
+    <meta
+      name="keywords"
+      content="kompyuter ta'mirlash, texnik xizmat, dasturiy muammo, virusni olib tashlash, DernSupport, arzon xizmat, Chilonzor kompyuter, Toshkent texnik xizmat, laptop tamiri"
+    />
+    <meta name="author" content="DernSupport" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Open Graph (Facebook va boshqalar uchun) -->
+    <meta
+      property="og:title"
+      content="DernSupport - Kompyuter Ta'mirlash Xizmatlari"
+    />
+    <meta
+      property="og:description"
+      content="Professional va tezkor kompyuter ta'mirlash xizmatlari: texnik, dasturiy muammolarni hal qilamiz."
+    />
+    <meta
+      property="og:image"
+      content="https://rgw.al.dsi.tecnico.ulisboa.pt/deec-production-tecnico-departments/deec_1.jpg"
+    />
+    <meta property="og:url" content="https://yourdomain.com" />
+    <meta property="og:type" content="website" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="DernSupport - Kompyuter Ta'mirlash Xizmatlari"
+    />
+    <meta
+      name="twitter:description"
+      content="Texnik muammolaringizni ishonchli va tez yeching. DernSupport bilan bog'laning."
+    />
+    <meta
+      name="twitter:image"
+      content="https://rgw.al.dsi.tecnico.ulisboa.pt/deec-production-tecnico-departments/deec_1.jpg"
+    />
+
+    <!-- Favicon (ixtiyoriy) -->
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
+
+    <!-- CSS Styles -->
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/notification.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+  </head>
+
+  <div id="new-application-modal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Yangi ariza qo‘shish</h2>
+        <span id="close" class="close">×</span>
+      </div>
+      <div class="modal-body">
+        <form id="new-application-form">
+          <div class="form-group">
+            <label for="First-name">Ism</label>
+            <input
+              type="text"
+              id="First-name"
+              required
+              placeholder="Ismingizni kiriting"
+            />
+          </div>
+          <div class="form-group">
+            <label for="Last-name">Familiya</label>
+            <input
+              type="text"
+              id="Last-name"
+              required
+              placeholder="Familiyangizni kiriting"
+            />
+          </div>
+          <div class="form-group">
+            <label for="d-name">Qurilma</label>
+            <input
+              type="text"
+              id="d-name"
+              required
+              placeholder="Qurilma nomini kiriting"
+            />
+          </div>
+          <div class="form-group">
+            <label for="application-email">Email</label>
+            <input
+              type="email"
+              id="application-email"
+              required
+              placeholder="Email kiriting"
+            />
+          </div>
+          <div class="alert-card">
+            <strong>Diqqat!</strong> Iltimos, kiritayotgan emailingiz
+            mavjudligiga ishonch hosil qiling. Barcha xabarlar aynan shu
+            emailingizga yuboriladi.
+          </div>
+
+          <div class="form-group">
+            <label for="person-type">Shaxs turi</label>
+            <select id="person-type" required>
+              <option value="">Tanlang</option>
+              <option value="individual">Jismoniy shaxs</option>
+              <option value="legal">Yuridik shaxs</option>
+            </select>
+          </div>
+          <div class="form-group" id="company-name-group" style="display: none">
+            <label for="company-name">Kompaniya nomi</label>
+            <input
+              type="text"
+              id="company-name"
+              placeholder="Kompaniya nomini kiriting"
+            />
+          </div>
+          <div class="form-group">
+            <label for="issue-type">Muammo turi</label>
+            <select id="issue-type" required>
+              <option value="">Tanlang</option>
+              <option value="Dasturiy muammo">Dasturiy muammo</option>
+              <option value="Texnik muammo">Texnik muammo</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="problem-description">Muammo tavsifi</label>
+            <textarea
+              id="problem-description"
+              rows="4"
+              required
+              placeholder="Muammoni tasvirlang"
+            ></textarea>
+          </div>
+          <div class="form-group">
+            <label for="location">Rayon</label>
+            <select id="location" required>
+              <option value="">Tanlang</option>
+              <option value="Chilonzor">Chilonzor</option>
+              <option value="Yunusobod">Yunusobod</option>
+              <option value="Mirzo Ulug‘bek">Mirzo Ulug‘bek</option>
+              <option value="Sergeli">Sergeli</option>
+              <option value="Olmazor">Olmazor</option>
+            </select>
+          </div>
+          <div class="privacy-consent">
+            <input type="checkbox" id="privacy" required />
+            <label for="privacy">
+              <a href="/privacy" target="_blank">Mahfiylik siyosati</a>
+              shartlariga roziman
+            </label>
+          </div>
+
+          <div class="form-actions">
+            <button id="lili" type="submit" class="btn1 primary-btn1">
+              Ariza yuborish
+            </button>
+            <button
+              type="button"
+              id="cancel-application-btn"
+              class="btn1 secondary-btn"
+            >
+              Bekor qilish
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div id="success-toast" class="toast" style="display: none">
+    <p>✅ Ariza muvaffaqiyatli yuborildi!</p>
+  </div>
+  <body>
+    <div class="landing-page">
+      <!-- Header -->
+      <header class="header">
+        <div class="container">
+          <div class="logo">
+            <i class="fas fa-laptop-medical"></i>
+            <span>DernSupport</span>
+          </div>
+          <nav class="nav">
+            <a href="/login" class="btn primary-btn">Tizimga Kirish</a>
+            <a href="/register" class="btn primary-btn">Ro‘yxatdan O‘tish</a>
+          </nav>
+        </div>
+      </header>
+
+      <!-- Hero Section -->
+      <section class="hero">
+        <div class="container">
+          <div class="hero-content">
+            <h1>Mutaxassis Kompyuter <span>Ta'mirlash Xizmatlari</span></h1>
+            <p>
+              Biz sizning texnik muammolaringizni tez va samarali hal qilamiz.
+              Professional xizmat arzon narxlarda.
+            </p>
+            <div class="con-btn">
+              <a href="/login" class="btn primary-btn">Tizimga Kirish</a>
+              <button id="forum-btn" class="btn-forum">Buyurtma Berish</button>
+            </div>
+          </div>
+          <div class="hero-image">
+            <img
+              src="https://rgw.al.dsi.tecnico.ulisboa.pt/deec-production-tecnico-departments/deec_1.jpg"
+              alt="Kompyuter Ta'miri"
+            />
+          </div>
+        </div>
+      </section>
+
+      <!-- Services Section -->
+      <section id="services" class="services">
+        <div class="container">
+          <h2 class="section-title">Bizning Xizmatlarimiz</h2>
+          <div class="services-grid">
+            <div class="service-card">
+              <div class="service-icon">
+                <i class="fas fa-laptop"></i>
+              </div>
+              <h3>Uskuna Ta'miri</h3>
+              <p>
+                Biz barcha uskuna muammolarini, jumladan ekran almashtirish,
+                klaviatura ta'miri, batareya almashtirish va boshqalarni hal
+                qilamiz.
+              </p>
+            </div>
+            <div class="service-card">
+              <div class="service-icon">
+                <i class="fas fa-shield-alt"></i>
+              </div>
+              <h3>Viruslarni Olib Tashlash</h3>
+              <p>
+                Biz kompyuteringizdan viruslar, zararli dasturlar va boshqa
+                tahdidlarni olib tashlaymiz va kelajakdagi infektsiyalarni
+                oldini olish uchun himoya o'rnatamiz.
+              </p>
+            </div>
+            <div class="service-card">
+              <div class="service-icon">
+                <i class="fas fa-microchip"></i>
+              </div>
+              <h3>Tizimni Yangilash</h3>
+              <p>
+                Kompyuteringiz ishlashini RAM yangilash, SSD o'rnatish va boshqa
+                uskuna yaxshilashlari bilan oshiring.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Why Choose Us Section -->
+      <section id="about" class="why-us">
+        <div class="container">
+          <h2 class="section-title">Nega Aynan Biz</h2>
+          <div class="features-grid">
+            <div class="feature">
+              <div class="feature-icon">
+                <i class="fas fa-check"></i>
+              </div>
+              <h3>Mutaxassis Texniklar</h3>
+              <p>Sertifikatlangan mutaxassislar, ko'p yillik tajribaga ega</p>
+            </div>
+            <div class="feature">
+              <div class="feature-icon">
+                <i class="fas fa-bolt"></i>
+              </div>
+              <h3>Tez Xizmat</h3>
+              <p>Barcha ta'mirlar uchun tez ishlash muddati</p>
+            </div>
+            <div class="feature">
+              <div class="feature-icon">
+                <i class="fas fa-dollar-sign"></i>
+              </div>
+              <h3>Arzon Narxlar</h3>
+              <p>Reklama narxlari, yashirin to'lovlarsiz</p>
+            </div>
+            <div class="feature">
+              <div class="feature-icon">
+                <i class="fas fa-headset"></i>
+              </div>
+              <h3>Mijozlarni Qo'llab-quvvatlash</h3>
+              <p>Do'stona qo'llab-quvvatlash jamoasi yordam berishga tayyor</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Call to Action -->
+      <section class="cta">
+        <div class="container">
+          <h2>Kompyuteringizni ta'mirlashga tayyormisiz?</h2>
+          <p>
+            Kompyuter muammolaringiz yomonlashguncha kutmang. Bizning mutaxassis
+            texniklarimiz bugun sizga yordam berishga tayyor!
+          </p>
+          <a href="login.html" class="btn primary-btn">Hozir Boshlash</a>
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <footer class="footer">
+        <div class="container">
+          <div class="footer-content">
+            <div class="footer-logo">
+              <div class="logoo">
+                <i class="fas fa-laptop-medical"></i>
+                <span>DernSupport</span>
+              </div>
+              <p>
+                Barcha texnik ehtiyojlaringiz uchun professional kompyuter
+                ta'mirlash xizmatlari.
+              </p>
+            </div>
+            <div class="footer-links">
+              <h3>Tez Havolalar</h3>
+              <ul>
+                <li><a href="#">Bosh Sahifa</a></li>
+                <li><a href="#services">Xizmatlar</a></li>
+                <li><a href="#about">Biz Haqimizda</a></li>
+                <li><a href="#contact">Bog‘lanish</a></li>
+              </ul>
+            </div>
+            <div class="footer-contact" id="contact">
+              <h3>Biz Bilan Bog‘laning</h3>
+              <p>
+                <i class="fas fa-map-marker-alt"></i> Ynagi Sergili 12/1, PDP
+                Universitet
+              </p>
+              <p><i class="fas fa-phone"></i> +998 94 927 50 06</p>
+              <p><i class="fas fa-envelope"></i> support@dernSupport.com</p>
+            </div>
+          </div>
+          <div class="footer-bottom">
+            <p>© 2025 DernSupport. Barcha huquqlar himoyalangan.</p>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <div id="toast-container"></div>
+
+    <script src="js/script.js"></script>
+    <script src="js/notification.js"></script>
+  </body>
+</html>

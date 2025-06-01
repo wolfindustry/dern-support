@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Usta sahifasi orqali arizalarni ko‘rish, baholash va ularni samarali boshqarish imkoniyati. Panel yordamida barcha jarayonlarni nazorat qiling."
+    />
+    <meta name="author" content="Administrator" />
+    <meta
+      name="keywords"
+      content="usta paneli, xizmat boshqaruvi, ariza baholash, ariza holati, onlayn xizmatlar"
+    />
+    <meta name="robots" content="noindex, nofollow" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:title" content="Usta Boshqaruv Sahifasi" />
+    <meta
+      property="og:description"
+      content="Arizalarni ko‘rib chiqing, baholang va yakunlang. Barcha xizmat jarayonlarini bir joyda boshqaring."
+    />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:url"
+      content="https://yourdomain.com/master-cabinet.html"
+    />
+    <meta
+      property="og:image"
+      content="https://yourdomain.com/assets/preview.png"
+    />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Usta Boshqaruv Paneli" />
+    <meta
+      name="twitter:description"
+      content="Xizmat arizalarini ko‘rish va boshqarish uchun qulay interfeys."
+    />
+    <meta
+      name="twitter:image"
+      content="https://yourdomain.com/assets/preview.png"
+    />
+
+    <title>Usta Saxifasi - DernSupport</title>
+    <link rel="stylesheet" href="css/master.css" />
+    <link rel="stylesheet" href="css/notification.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+    <!-- Google Fonts: Roboto -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div id="toast-container"></div>
+    <div class="cabinet-container">
+      <!-- Sidebar -->
+      <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+          <h2>Usta Saxifasi</h2>
+        </div>
+        <div class="sidebar-nav">
+          <ul>
+            <li id="dashboard-link" class="active">
+              <a href="#"
+                ><i class="fas fa-tachometer-alt"></i>Boshqaruv Panel</a
+              >
+            </li>
+            <li id="applications-link">
+              <a href="#"><i class="fas fa-clipboard-list"></i>E'lonlar</a>
+            </li>
+          </ul>
+        </div>
+        <div class="sidebar-footer">
+          <button id="logout-btn" class="btn secondary-btn">
+            <i class="fas fa-sign-out-alt"></i> Chiqish
+          </button>
+        </div>
+      </div>
+
+      <!-- Main Content -->
+      <div class="main-content">
+        <!-- Header -->
+        <header class="cabinet-header">
+          <button id="burger-menu" class="burger-menu">
+            <i class="fas fa-bars"></i>
+          </button>
+          <div class="user-info">
+            <i class="fas fa-user-circle"></i>
+            <span id="user-email">master@example.com</span>
+          </div>
+        </header>
+
+        <!-- Dashboard Content -->
+        <div id="dashboard-content" class="content-section active">
+          <h2>Boshqaruv Paneli</h2>
+          <div class="dashboard-stats">
+            <div class="stat-card">
+              <div class="stat-icon"><i class="fas fa-clipboard-list"></i></div>
+              <div class="stat-info">
+                <h3>Hamma Arizalar</h3>
+                <p id="total-applications">0</p>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon"><i class="fas fa-spinner"></i></div>
+              <div class="stat-info">
+                <h3>Jarayonda</h3>
+                <p id="in-progress">0</p>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon"><i class="fas fa-check-circle"></i></div>
+              <div class="stat-info">
+                <h3>Tugallangan</h3>
+                <p id="completed">0</p>
+              </div>
+            </div>
+          </div>
+          <div class="completed-submissions">
+            <h3>Tugallangan Arizalar</h3>
+            <div
+              id="completed-submissions-container"
+              class="completed-submissions-container"
+            ></div>
+          </div>
+        </div>
+
+        <!-- Applications Content -->
+        <div id="applications-content" class="content-section">
+          <h2>Barcha kelgan arizalar</h2>
+          <div class="filter-container">
+            <label for="status-filter">Status bo'yicha filtr:</label>
+            <select id="status-filter">
+              <option value="all">Hammasi</option>
+              <option value="Kutilmoqda">Kutilmoqda</option>
+              <option value="Jarayonda">Jarayonda</option>
+              <option value="Tugallangan">Tugallangan</option>
+            </select>
+          </div>
+          <div
+            id="applications-container"
+            style="display: flex; flex-direction: column; gap: 10px"
+          ></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Evaluation Modal -->
+    <div id="evaluation-modal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2>Baholash</h2>
+          <span class="close">×</span>
+        </div>
+        <div class="modal-body">
+          <form id="evaluation-form">
+            <input type="hidden" id="application-id" />
+            <div class="form-group">
+              <label for="device-name">Qurilma nomi</label>
+              <input type="text" id="device-name" disabled />
+            </div>
+            <div class="form-group">
+              <label for="problem-type">Muammo turi</label>
+              <input type="text" id="problem-type" disabled />
+            </div>
+            <div class="form-group">
+              <label for="description">Tavsif</label>
+              <textarea id="description" disabled></textarea>
+            </div>
+            <div class="form-group">
+              <label for="estimated-price">Narx (sum)</label>
+              <input type="number" id="estimated-price" step="0.01" required />
+            </div>
+            <div class="form-group">
+              <label for="estimated-completion-time"
+                >Taxminiy tugash sanasi</label
+              >
+              <input
+                type="date"
+                id="estimated-completion-time"
+                min="2025-05-30"
+                required
+              />
+            </div>
+            <div class="form-actions">
+              <button
+                type="button"
+                id="cancel-evaluation-btn"
+                class="btn secondary-btn"
+              >
+                Bekor qilish
+              </button>
+              <button type="submit" class="btn primary-btn">Saqlash</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <script src="./js/master-cabinet.js"></script>
+    <script src="./js/notification.js"></script>
+  </body>
+</html>

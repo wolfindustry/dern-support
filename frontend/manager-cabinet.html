@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Boshqaruvchi Sahifasi - DernSupport</title>
+
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="DernSupport boshqaruv paneli orqali arizalarni ko‘rib chiqish, foydalanuvchilarni boshqarish va statistikani ko‘rish.">
+  <meta name="keywords" content="DernSupport, boshqaruvchi, admin panel, texnik xizmat, foydalanuvchilar, arizalar, statistika">
+  <meta name="author" content="DernSupport Team">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:title" content="Boshqaruvchi Sahifasi - DernSupport">
+  <meta property="og:description" content="DernSupport boshqaruv paneli: arizalar, foydalanuvchilar va statistika.">
+  <meta property="og:image" content="https://example.com/logo.png"> <!-- logo manzilini almashtiring -->
+  <meta property="og:url" content="https://dernSupport.uz/manager.html">
+  <meta property="og:type" content="website">
+
+  <!-- Twitter Meta -->
+  <meta name="twitter:title" content="Boshqaruvchi Sahifasi - DernSupport">
+  <meta name="twitter:description" content="DernSupport admin paneli: arizalarni ko‘rib chiqing, foydalanuvchilarni boshqaring.">
+  <meta name="twitter:image" content="https://example.com/logo.png">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/manager.css" />
+  <link rel="stylesheet" href="css/notification.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.min.js"></script>
+</head>
+<body>
+  <!-- Notification container -->
+  <div id="toast-container"></div>
+
+  <div class="cabinet-container">
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <h2>Boshqaruvchi Sahifasi</h2>
+      </div>
+      <div class="sidebar-nav">
+        <ul>
+          <li id="dashboard-link" class="active">
+            <a href="#"><i class="fas fa-tachometer-alt"></i>Boshqaruv Panel</a>
+          </li>
+          <li id="applications-link">
+            <a href="#"><i class="fas fa-clipboard-list"></i> Arizalar</a>
+          </li>
+          <li id="products-link">
+            <a href="#"><i class="fas fa-users"></i> Foydalanuvchilar</a>
+          </li>
+          <li id="create-application-link">
+            <a href="#"><i class="fas fa-plus"></i> E‘lon yaratish</a>
+          </li>
+        </ul>
+      </div>
+      <div class="sidebar-footer">
+        <button id="logout-btn" class="btn secondary-btn">
+          <i class="fas fa-sign-out-alt"></i> Chiqish
+        </button>
+      </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+      <!-- Header -->
+      <header class="cabinet-header">
+        <button id="burger-menu" class="burger-menu"><i class="fas fa-bars"></i></button>
+        <div class="user-info">
+          <i class="fas fa-user-circle"></i>
+          <span id="user-email">manager@example.com</span>
+        </div>
+      </header>
+
+      <!-- Dashboard Content -->
+      <div id="dashboard-content" class="content-section active">
+        <h2>Boshqaruv Panel</h2>
+        <div class="dashboard-stats">
+          <div class="stat-card">
+            <div class="stat-icon"><i class="fas fa-clipboard-list"></i></div>
+            <div class="stat-info">
+              <h3>Jami arizalar</h3>
+              <p id="total-applications">0</p>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon"><i class="fas fa-spinner"></i></div>
+            <div class="stat-info">
+              <h3>Jarayonda</h3>
+              <p id="in-progress">0</p>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon"><i class="fas fa-check-circle"></i></div>
+            <div class="stat-info">
+              <h3>Tugallangan</h3>
+              <p id="completed">0</p>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon"><i class="fas fa-hourglass-half"></i></div>
+            <div class="stat-info">
+              <h3>Kutilmoqda</h3>
+              <p id="total-products">0</p>
+            </div>
+          </div>
+        </div>
+
+        <div id="charts-section">
+          <h2>Statistik diagrammalar</h2>
+          <div class="charts-container">
+            <div class="chart-card">
+              <h3>Hududlar bo‘yicha arizalar</h3>
+              <canvas id="regionChart"></canvas>
+            </div>
+            <div class="chart-card">
+              <h3>Muammo turlari</h3>
+              <canvas id="problemChart"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Applications Content -->
+      <div id="applications-content" class="content-section">
+        <div id="manager-applications" class="zaza">
+          <h2>Barcha kelgan arizalar</h2>
+          <div class="filter-container">
+            <label for="status-filter"><i class="fas fa-filter"></i> Holati bo‘yicha filtr:</label>
+            <select id="status-filter">
+              <option value="all">Barchasi</option>
+              <option value="Kutilmoqda">Kutilmoqda</option>
+              <option value="Jarayonda">Jarayonda</option>
+              <option value="Tugallangan">Tugallangan</option>
+            </select>
+          </div>
+          <div id="all-submissions-container" class="zizi"></div>
+        </div>
+      </div>
+
+      <!-- Users Content -->
+      <div id="products-content" class="content-section">
+        <div id="users-section">
+          <h2>Barcha foydalanuvchilar</h2>
+          <div class="search-container">
+            <label for="user-search"><i class="fas fa-search"></i> Qidiruv:</label>
+            <input type="text" id="user-search" placeholder="Ism yoki email kiriting..." />
+          </div>
+          <div id="all-users-container"></div>
+        </div>
+      </div>
+
+      <!-- Create Application Content -->
+      <div id="create-application-content" class="content-section">
+        <h2>Ariza yuborish</h2>
+        <form id="application-form" class="form-container">
+          <div class="form-group">
+            <label for="device-name">Qurilma nomi</label>
+            <input type="text" id="device-name" placeholder="Qurilmangiz nomini kiriting" required />
+          </div>
+          <div class="form-group">
+            <label for="issue-type">Muammo turi</label>
+            <select id="issue-type" required>
+              <option value="">Muammo turini tanlang</option>
+              <option value="Texnik muammo">Texnik muammo</option>
+              <option value="Dasturiy muammo">Dasturiy muammo</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="description">Muammo tavsifi</label>
+            <textarea id="description" rows="4" placeholder="Muammoni batafsil yozing..." required></textarea>
+          </div>
+          <div class="form-group">
+            <label for="location">Rayon</label>
+            <select id="location" required>
+              <option value="">Tanlang</option>
+              <option value="Chilonzor">Chilonzor</option>
+              <option value="Yunusobod">Yunusobod</option>
+              <option value="Mirzo Ulug‘bek">Mirzo Ulug‘bek</option>
+              <option value="Sergeli">Sergeli</option>
+              <option value="Olmazor">Olmazor</option>
+            </select>
+          </div>
+          <div class="form-actions">
+            <button type="submit" class="btn primary-btn">Yuborish</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script src="./js/notification.js"></script>
+  <script src="./js/manager-cabinet.js"></script>
+</body>
+</html>

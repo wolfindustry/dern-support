@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="DernSupport ro‘yxatdan o‘tish sahifasi. Email, ism, familiya va shaxs turini kiriting." />
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="author" content="DernSupport" />
+    <title>Ro'yhatdan O'tish - DernSupport</title>
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="css/notification.css">
+    <link rel="stylesheet" href="css/parol.css">
+    <link rel="stylesheet" href="css/register.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+      <div class="login-container">
+        <div class="login-card">
+            <div class="login-header">
+                <h1>DernSupport</h1>
+                <p>Kompyuter Tuzatish Xizmati</p>
+            </div>
+        
+            <div id="client-login" class="login-form active">
+                <h2>Royhatdan O'tish</h2>
+                <p>Sizga xabar yuborishimiz uchun emailingizni kiriting</p>
+                <form id="client-login-form">
+                    <div class="form-group">
+                        <label for="client-email">Email</label>
+                        <div class="input-with-icon">
+                            <i class="fas fa-envelope"></i>
+                            <input type="email" id="c-email" placeholder="sizning@email.com" required>
+                        </div>
+                        <div style="display: flex; gap: 5px;">
+                            <div style="display: flex; flex-direction: column;">
+                                <label for="fname">Ism</label>
+                                <div class="input-with-icon">
+                                    <i class="fas fa-user"></i>
+                                    <input type="text" id="fname" placeholder="Ismingiz" required>
+                                </div>
+                            </div>
+                        <div style="display: flex; flex-direction: column;">
+                                <label for="lname">Familiya</label>
+                                <div class="input-with-icon">
+                                    <i class="fas fa-user"></i>
+                                    <input type="text" id="lname" placeholder="Familiyangiz" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <label for="person-type">Shaxs turi</label>
+                          <select id="pirson-type" required>
+                            <option value="">Tanlang</option>
+                            <option value="individual">Jismoniy shaxs</option>
+                            <option value="legal">Yuridik shaxs</option>
+                          </select>
+                        </div>
+                        <div id="company" class="ii">
+                                <label for="lname">Kompaniya</label>
+                                <div class="input-with-icon">
+                                    <i class="fas fa-user"></i>
+                                    <input type="text" id="c-name" placeholder="Kompaniyangiz nomini kiriting" required>
+                                </div>
+                        </div>
+                        </div>
+                        <div class="privacy-consent">
+                          <input type="checkbox" id="privacy" required />
+                          <label for="privacy">
+                            <a href="/privacy" target="_blank">Mahfiylik siyosati</a>
+                            shartlariga roziman
+                          </label>
+                        </div>
+                        <button id="sendBtn" type="button" class="btn primary-btn">Xabar Yuborish</button>
+                        <div class="alert-card">
+                            <h4><span class="alert-icon">⚠️</span> Diqqat!</h4>
+                            <p>Iltimos, emailingizni aniq kiriting. Chunki barcha xabarlar aynan shu emailga yuboriladi.</p>
+                        </div>
+                        </div>
+                    </div>
+                </form>
+                 
+            </div>
+            <div id="toast-container"></div>
+            <script src="js/register.js"></script>
+            <script src="js/notification.js"></script>
+</body>
+</html>

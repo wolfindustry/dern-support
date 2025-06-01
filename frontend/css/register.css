@@ -1,0 +1,33 @@
+#pirson-type{
+  width: 100%;
+  padding: 12px 15px 12px 15px;
+  border: 1px solid #dce0e3;
+  border-radius: 5px;
+  font-size: 16px;
+  transition: border-color 0.3s;
+  box-sizing: border-box;
+}
+
+.ii{
+    display : none; 
+    flex-direction: column;
+}
+
+.privacy-consent {
+    margin-top: 15px;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.privacy-consent label {
+    cursor: pointer;
+}
+
+.privacy-consent a {
+    color: #007BFF;
+    text-decoration: none;
+}
+
+.privacy-consent a:hover {
+    text-decoration: underline;
+}
