@@ -17,12 +17,12 @@ app.use(express.json());
 
 // MongoDB ulanish
 mongoose.connect(
-  "mongodb+srv://abdullayevsardor813:ZH69A0kHib7oulEq@cluster0.umq5rzl.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0/dernSupport",
+  "mongodb+srv://abdullayevsardor813:ZH69A0kHib7oulEq@cluster0.umq5rzl.mongodb.net/dernSupport?retryWrites=true&w=majority&appName=Cluster0",
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   }
-);
+).then(()=>console.log("ulandi"))
 
 // Data base sxema
 // Aplication
