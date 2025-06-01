@@ -1,6 +1,6 @@
 async function loadAllSubmissions() {
   try {
-    const res = await fetch("https://sardor.robohouse.tech/api/api/all-submissions");
+    const res = await fetch("https://sardor.robohouse.tech/api/all-submissions");
     const data = await res.json();
 
     if (data.success) {
@@ -61,7 +61,7 @@ ccess) {
             {
               label: "Arizalar sasync function loadSubmissionStats() {
   try {
-    const res = await fetch("https://sardor.robohouse.tech/api/api/submission-stats");
+    const res = await fetch("https://sardor.robohouse.tech/api/submission-stats");
     const data = await res.json();
 
     if (data.suoni (Hududlar bo‘yicha)",
@@ -117,7 +117,7 @@ ccess) {
 
 async function loadAllUsers() {
   try {
-    const res = await fetch("https://sardor.robohouse.tech/api/api/all-users");
+    const res = await fetch("https://sardor.robohouse.tech/api/all-users");
     const data = await res.json();
     console.log(data);
 

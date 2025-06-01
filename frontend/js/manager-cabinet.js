@@ -66,7 +66,7 @@ async function loadStatistics() {
   console.log("fetch: /api/submission-stats");
   try {
     const res = await fetch(
-      "https://sardor.robohouse.tech/api/api/submission-stats"
+      "https://sardor.robohouse.tech/api/submission-stats"
     );
     console.log("Javob:", res);
     const data = await res.json();
@@ -97,7 +97,7 @@ async function loadSubmissions() {
   console.log("fetch: /api/all-submissions");
   try {
     const res = await fetch(
-      "https://sardor.robohouse.tech/api/api/all-submissions"
+      "https://sardor.robohouse.tech/api/all-submissions"
     );
     console.log("Javob:", res);
     const data = await res.json();
@@ -162,7 +162,7 @@ let allUsers = [];
 async function loadUsers() {
   console.log("fetch: /api/all-users");
   try {
-    const res = await fetch("https://sardor.robohouse.tech/api/api/all-users");
+    const res = await fetch("https://sardor.robohouse.tech/api/all-users");
     console.log("Javob:", res);
     const data = await res.json();
     console.log("Ma'lumotlar:", data);
@@ -277,7 +277,7 @@ function setupApplicationForm() {
       try {
         console.log("fetch: /api/submit", applicationData);
         const response = await fetch(
-          "https://sardor.robohouse.tech/api/api/submit",
+          "https://sardor.robohouse.tech/api/submit",
           {
             method: "POST",
             headers: {

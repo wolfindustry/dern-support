@@ -43,14 +43,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const password = document.getElementById("client-password").value;
 
     try {
-      const response = await fetch(
-        "https://sardor.robohouse.tech/api/login",
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ email, password }),
-        }
-      );
+      const response = await fetch("https://sardor.robohouse.tech/api/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password }),
+      });
 
       const data = await response.json();
 
@@ -82,7 +79,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     try {
       const response = await fetch(
-        "https://sardor.robohouse.tech/api/api/manager-login",
+        "https://sardor.robohouse.tech/api/manager-login",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -119,7 +116,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     try {
       const response = await fetch(
-        "https://sardor.robohouse.tech/api/api/master-login",
+        "https://sardor.robohouse.tech/api/master-login",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
