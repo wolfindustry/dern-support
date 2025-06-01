@@ -43,11 +43,14 @@ document.addEventListener("DOMContentLoaded", () => {
     const password = document.getElementById("client-password").value;
 
     try {
-      const response = await fetch("http://localhost:3000/api/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, password }),
-      });
+      const response = await fetch(
+        "https://sardor.robohouse.tech/api/api/login",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email, password }),
+        }
+      );
 
       const data = await response.json();
 
@@ -55,7 +58,7 @@ document.addEventListener("DOMContentLoaded", () => {
         toastSuccess("Tizimga muvaffaqiyatli kirdingiz", "Welcome");
         localStorage.setItem("userRole", "client");
         localStorage.setItem("userEmail", email);
-        localStorage.setItem('userFulln', data.name)
+        localStorage.setItem("userFulln", data.name);
 
         setTimeout(() => {
           window.location.href = "/client";
@@ -67,7 +70,7 @@ document.addEventListener("DOMContentLoaded", () => {
       console.error("Login so‘rovda xatolik:", error);
       showError("Server bilan bog‘lanishda xatolik");
     }
-});
+  });
 
   // Manager login form submission
   const manLoginForm = document.getElementById("manager-login-form");
@@ -77,20 +80,19 @@ document.addEventListener("DOMContentLoaded", () => {
     const email = document.getElementById("manager-email").value;
     const password = document.getElementById("manager-password").value;
 
-    
-
     try {
-
-      const response = await fetch("http://localhost:3000/api/manager-login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, password }),
-      });
+      const response = await fetch(
+        "https://sardor.robohouse.tech/api/api/manager-login",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email, password }),
+        }
+      );
 
       const info = await response.json();
 
       if (info.success) {
-       
         localStorage.setItem("userRole", "manager");
         localStorage.setItem("userEmail", email);
 
@@ -98,10 +100,7 @@ document.addEventListener("DOMContentLoaded", () => {
           window.location.href = "/manager";
         }, 1500);
 
-        toastSuccess(
-          'Muvaffaqiyatli royhatdan otdingiz'
-        );
-
+        toastSuccess("Muvaffaqiyatli royhatdan otdingiz");
       } else {
         toastError("Email yoki parol natogri");
       }
@@ -118,20 +117,19 @@ document.addEventListener("DOMContentLoaded", () => {
     const email = document.getElementById("master-email").value;
     const password = document.getElementById("master-password").value;
 
-    
-
     try {
-
-      const response = await fetch("http://localhost:3000/api/master-login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, password }),
-      });
+      const response = await fetch(
+        "https://sardor.robohouse.tech/api/api/master-login",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email, password }),
+        }
+      );
 
       const info = await response.json();
 
       if (info.success) {
-       
         localStorage.setItem("userRole", "master");
         localStorage.setItem("userEmail", email);
 
@@ -139,10 +137,7 @@ document.addEventListener("DOMContentLoaded", () => {
           window.location.href = "/master";
         }, 1500);
 
-        toastSuccess(
-          'Muvaffaqiyatli royhatdan otdingiz'
-        );
-
+        toastSuccess("Muvaffaqiyatli royhatdan otdingiz");
       } else {
         toastError("Email yoki parol natogri");
       }
@@ -202,7 +197,3 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 });
-
-
-
-

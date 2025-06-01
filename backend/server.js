@@ -16,10 +16,13 @@ const app = express();
 app.use(express.json());
 
 // MongoDB ulanish
-mongoose.connect("mongodb://localhost:27017/supportForm", {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+mongoose.connect(
+  "mongodb+srv://abdullayevsardor813:ZH69A0kHib7oulEq@cluster0.umq5rzl.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0/dernSupport",
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  }
+);
 
 // Data base sxema
 // Aplication
@@ -318,7 +321,20 @@ async function createDefaultMaster() {
   }
 }
 
+async function createDefaultManager() {
+  const existing = await Manager.findOne({ email: "manager@techfix.com" });
+  if (!existing) {
+    const hashedPassword = await bcrypt.hash("manager123", 10);
+    await Manager.create({
+      email: "manager@techfix.com",
+      password: hashedPassword,
+    });
+    console.log("Default manager created.");
+  }
+}
+
 createDefaultMaster()
+createDefaultManager()
 // 3. Login API
 app.post("/api/manager-login", async (req, res) => {
   try {
@@ -441,7 +457,7 @@ app.get("/api/all-users", async (req, res) => {
 // Yangi parol yaratish funksiyasi
 
 
-app.post("/reset-password", async (req, res) => {
+app.post("/api/reset-password", async (req, res) => {
   const { email } = req.body;
 
   try {
@@ -469,7 +485,7 @@ app.post("/reset-password", async (req, res) => {
   }
 });
 
-app.post("/register", async (req, res) => {
+app.post("/api/register", async (req, res) => {
   const { firstName, lastName, userType, companyName, email } = req.body;
 
   try {
@@ -510,7 +526,7 @@ app.post("/register", async (req, res) => {
   }
 });
 
-app.post("/change-password", async (req, res) => {
+app.post("/api/change-password", async (req, res) => {
   const { email, currentPassword, newPassword } = req.body;
 
   try {

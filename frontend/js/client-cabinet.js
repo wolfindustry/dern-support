@@ -9,13 +9,13 @@ document.addEventListener("DOMContentLoaded", () => {
     return;
   }
 
-  const LocalHost = "http://localhost:3000/";
+  const LocalHost = "https://sardor.robohouse.tech/api/";
 
-  if(mail == null){
-  toastError('Siz tizimga kirmagansiz yoki royhtdan otmagansiz')
-  setTimeout(() => {
-    window.location.href = '/login'
-  }, 2000);
+  if (mail == null) {
+    toastError("Siz tizimga kirmagansiz yoki royhtdan otmagansiz");
+    setTimeout(() => {
+      window.location.href = "/login";
+    }, 2000);
   }
 
   // Set user email in header
@@ -107,12 +107,12 @@ document.addEventListener("DOMContentLoaded", () => {
       const problemType = document.getElementById("issue-type").value;
       const description = document.getElementById("description").value.trim();
       const region = document.getElementById("location").value;
-      const dname = document.getElementById('device-name').value
+      const dname = document.getElementById("device-name").value;
       const userEmail = document.getElementById("user-email").textContent; // foydalanuvchi emaili (agar kerak bo‘lsa)
 
-      if(dname == ''){
-        toastError('Siz qurilma nomini kiritmadingiz')
-        return
+      if (dname == "") {
+        toastError("Siz qurilma nomini kiritmadingiz");
+        return;
       }
 
       const submitButton = document.getElementById("primary-btn");
@@ -127,8 +127,8 @@ document.addEventListener("DOMContentLoaded", () => {
         region,
         price: null,
         status: "Kutilmoqda",
-        deviceName : dname,
-        estimatedCompletionTime: null
+        deviceName: dname,
+        estimatedCompletionTime: null,
       };
 
       try {
@@ -150,7 +150,7 @@ document.addEventListener("DOMContentLoaded", () => {
       } catch (error) {
         console.error("Serverga ulanishda xatolik:", error);
         alert("Serverga ulanishda xatolik yuz berdi.");
-      }finally{
+      } finally {
         submitButton.textContent = "Yuborish";
         submitButton.disabled = false;
       }
@@ -225,46 +225,42 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Logout qilish
   logoutBtn.addEventListener("click", () => {
-    localStorage.removeItem('userEmail');
-    localStorage.removeItem('userFulln');
+    localStorage.removeItem("userEmail");
+    localStorage.removeItem("userFulln");
     window.location.href = "login.html"; // login sahifangiz nomi shu bo‘lsa
   });
 });
 
 // Burger menyusini sozlash
-  const burgerMenu = document.getElementById("burger-menu");
-  const sidebar = document.getElementById("sidebar");
-  if (burgerMenu && sidebar) {
-    burgerMenu.addEventListener("click", () => {
-      sidebar.classList.toggle("active");
-      console.log(
-        "Burger menyusi bosildi, sidebar faol:",
-        sidebar.classList.contains("active")
-      );
+const burgerMenu = document.getElementById("burger-menu");
+const sidebar = document.getElementById("sidebar");
+if (burgerMenu && sidebar) {
+  burgerMenu.addEventListener("click", () => {
+    sidebar.classList.toggle("active");
+    console.log(
+      "Burger menyusi bosildi, sidebar faol:",
+      sidebar.classList.contains("active")
+    );
+  });
+
+  // Navigatsiya elementlari bosilganda sidebar yopilishi
+  const navLinks = document.querySelectorAll(".sidebar-nav ul li a");
+  navLinks.forEach((link) => {
+    link.addEventListener("click", () => {
+      sidebar.classList.remove("active");
+      console.log("Navigatsiya elementi bosildi, sidebar yopildi");
     });
+  });
 
-    // Navigatsiya elementlari bosilganda sidebar yopilishi
-    const navLinks = document.querySelectorAll(".sidebar-nav ul li a");
-    navLinks.forEach((link) => {
-      link.addEventListener("click", () => {
-        sidebar.classList.remove("active");
-        console.log("Navigatsiya elementi bosildi, sidebar yopildi");
-      });
-    });
-
-    // Tashqarida bosilganda sidebar yopilishi
-    document.addEventListener("click", (e) => {
-      if (
-        !sidebar.contains(e.target) &&
-        !burgerMenu.contains(e.target) &&
-        sidebar.classList.contains("active")
-      ) {
-        sidebar.classList.remove("active");
-        console.log("Tashqarida bosildi, sidebar yopildi");
-      }
-    });
-
-    
-
-
+  // Tashqarida bosilganda sidebar yopilishi
+  document.addEventListener("click", (e) => {
+    if (
+      !sidebar.contains(e.target) &&
+      !burgerMenu.contains(e.target) &&
+      sidebar.classList.contains("active")
+    ) {
+      sidebar.classList.remove("active");
+      console.log("Tashqarida bosildi, sidebar yopildi");
+    }
+  });
 }

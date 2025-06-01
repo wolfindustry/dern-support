@@ -9,8 +9,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   // Agar userRole yo'q bo'lsa yoki manager bo'lmasa, login sahifasiga yo'naltirish
   if (!userRole || userRole !== "manager") {
     console.log("Autentifikatsiya talab qilinadi yoki manager roli yo'q");
-    toastError("Kirish uchun autentifikatsiya talab qilinadi."
-    );
+    toastError("Kirish uchun autentifikatsiya talab qilinadi.");
     setTimeout(() => {
       window.location.href = "/login";
     }, 1500);
@@ -66,7 +65,9 @@ document.addEventListener("DOMContentLoaded", async () => {
 async function loadStatistics() {
   console.log("fetch: /api/submission-stats");
   try {
-    const res = await fetch("http://localhost:3000/api/submission-stats");
+    const res = await fetch(
+      "https://sardor.robohouse.tech/api/api/submission-stats"
+    );
     console.log("Javob:", res);
     const data = await res.json();
     console.log("Ma'lumotlar:", data);
@@ -95,7 +96,9 @@ let allSubmissions = [];
 async function loadSubmissions() {
   console.log("fetch: /api/all-submissions");
   try {
-    const res = await fetch("http://localhost:3000/api/all-submissions");
+    const res = await fetch(
+      "https://sardor.robohouse.tech/api/api/all-submissions"
+    );
     console.log("Javob:", res);
     const data = await res.json();
     console.log("Ma'lumotlar:", data);
@@ -159,7 +162,7 @@ let allUsers = [];
 async function loadUsers() {
   console.log("fetch: /api/all-users");
   try {
-    const res = await fetch("http://localhost:3000/api/all-users");
+    const res = await fetch("https://sardor.robohouse.tech/api/api/all-users");
     console.log("Javob:", res);
     const data = await res.json();
     console.log("Ma'lumotlar:", data);
@@ -196,7 +199,11 @@ function renderUsers(users) {
         <p><strong>Ism:</strong> ${user.fname || "N/A"}</p>
         <p><strong>Famailiya:</strong> ${user.lname || "N/A"}</p>
         <p><strong>Turi:</strong> ${user.personType || "N/A"}</p>
-        ${user.personType == 'legal'? `<p><strong>Kompaniya:</strong> ${user.companyName}</p>` : ''}
+        ${
+          user.personType == "legal"
+            ? `<p><strong>Kompaniya:</strong> ${user.companyName}</p>`
+            : ""
+        }
         <p><strong>Ro‘yxatdan o‘tgan:</strong> ${new Date(
           user.time
         ).toLocaleDateString()}</p>
@@ -269,19 +276,20 @@ function setupApplicationForm() {
 
       try {
         console.log("fetch: /api/submit", applicationData);
-        const response = await fetch("http://localhost:3000/api/submit", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(applicationData),
-        });
+        const response = await fetch(
+          "https://sardor.robohouse.tech/api/api/submit",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(applicationData),
+          }
+        );
 
         console.log("Javob:", response);
         if (response.ok) {
-          toastSuccess(
-            "Ariza muvaffaqiyatli yaratildi!"
-          );
+          toastSuccess("Ariza muvaffaqiyatli yaratildi!");
           applicationForm.reset();
           // Arizalar bo‘limini yangilash
           await loadSubmissions();
@@ -289,15 +297,11 @@ function setupApplicationForm() {
           showSection("applications-content");
           setActiveNavItem("applications-link");
         } else {
-          toastError(
-            "Ariza yuborishda xatolik yuz berdi."
-          );
+          toastError("Ariza yuborishda xatolik yuz berdi.");
         }
       } catch (error) {
         console.error("Serverga ulanishda xatolik:", error);
-        toastError(
-          "Serverga ulanishda xatolik yuz berdi."
-        );
+        toastError("Serverga ulanishda xatolik yuz berdi.");
       } finally {
         submitButton.textContent = "Yuborish";
         submitButton.disabled = false;
@@ -504,35 +508,35 @@ function showError(message, title = "Xato") {
 }
 
 // Burger menyusini sozlash
-  const burgerMenu = document.getElementById("burger-menu");
-  const sidebar = document.getElementById("sidebar");
-  if (burgerMenu && sidebar) {
-    burgerMenu.addEventListener("click", () => {
-      sidebar.classList.toggle("active");
-      console.log(
-        "Burger menyusi bosildi, sidebar faol:",
-        sidebar.classList.contains("active")
-      );
-    });
+const burgerMenu = document.getElementById("burger-menu");
+const sidebar = document.getElementById("sidebar");
+if (burgerMenu && sidebar) {
+  burgerMenu.addEventListener("click", () => {
+    sidebar.classList.toggle("active");
+    console.log(
+      "Burger menyusi bosildi, sidebar faol:",
+      sidebar.classList.contains("active")
+    );
+  });
 
-    // Navigatsiya elementlari bosilganda sidebar yopilishi
-    const navLinks = document.querySelectorAll(".sidebar-nav ul li a");
-    navLinks.forEach((link) => {
-      link.addEventListener("click", () => {
-        sidebar.classList.remove("active");
-        console.log("Navigatsiya elementi bosildi, sidebar yopildi");
-      });
+  // Navigatsiya elementlari bosilganda sidebar yopilishi
+  const navLinks = document.querySelectorAll(".sidebar-nav ul li a");
+  navLinks.forEach((link) => {
+    link.addEventListener("click", () => {
+      sidebar.classList.remove("active");
+      console.log("Navigatsiya elementi bosildi, sidebar yopildi");
     });
+  });
 
-    // Tashqarida bosilganda sidebar yopilishi
-    document.addEventListener("click", (e) => {
-      if (
-        !sidebar.contains(e.target) &&
-        !burgerMenu.contains(e.target) &&
-        sidebar.classList.contains("active")
-      ) {
-        sidebar.classList.remove("active");
-        console.log("Tashqarida bosildi, sidebar yopildi");
-      }
-    });
-  }
+  // Tashqarida bosilganda sidebar yopilishi
+  document.addEventListener("click", (e) => {
+    if (
+      !sidebar.contains(e.target) &&
+      !burgerMenu.contains(e.target) &&
+      sidebar.classList.contains("active")
+    ) {
+      sidebar.classList.remove("active");
+      console.log("Tashqarida bosildi, sidebar yopildi");
+    }
+  });
+}

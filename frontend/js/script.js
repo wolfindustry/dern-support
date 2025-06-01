@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded" ,() => {
+document.addEventListener("DOMContentLoaded", () => {
   // Modalni ochish
   document.getElementById("forum-btn").addEventListener("click", () => {
     document.getElementById("new-application-modal").style.display = "block";
@@ -51,7 +51,6 @@ document.addEventListener("DOMContentLoaded" ,() => {
       const lname = document.getElementById("Last-name").value;
       const dname = document.getElementById("d-name").value;
       const privacy = document.getElementById("privacy").checked;
-      
 
       if (personType === "legal" && !companyName) {
         toastError("Iltimos, kompaniya nomini kiriting.");
@@ -79,10 +78,10 @@ document.addEventListener("DOMContentLoaded" ,() => {
         return;
       } else if (description == "") {
         toastError("Siz biror ta ham izoh kiritmadingiz");
-        return
+        return;
       } else if (dname == "") {
         toastError("Siz qurilma nomini kiritmadingiz");
-        return
+        return;
       }
 
       const data = {
@@ -97,19 +96,22 @@ document.addEventListener("DOMContentLoaded" ,() => {
         price: null,
         status: "Kutilmoqda",
         deviceName: dname,
-        estimatedCompletionTime: null
+        estimatedCompletionTime: null,
       };
 
       try {
-        const response = await fetch("http://localhost:3000/api/submit", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(data),
-        });
+        const response = await fetch(
+          "https://sardor.robohouse.tech/api/submit",
+          {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(data),
+          }
+        );
 
         if (response.ok) {
-          toastSuccess('Ariza yaratildi, emailingizga parol yuborildi')
-          setTimeout(() => location.reload(), 1000); 
+          toastSuccess("Ariza yaratildi, emailingizga parol yuborildi");
+          setTimeout(() => location.reload(), 1000);
         } else {
           toastError("Yuborishda xatolik yuz berdi.");
         }
