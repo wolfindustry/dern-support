@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
     return;
   }
 
-  const LocalHost = "https://sardor.robohouse.tech/api/";
+  const LocalHost = "https://sardor.robohouse.tech/";
 
   if (mail == null) {
     toastError("Siz tizimga kirmagansiz yoki royhtdan otmagansiz");
